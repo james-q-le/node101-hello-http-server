@@ -1,7 +1,9 @@
-const express = require('express')
-const app = express()
-const port = 8080
+const http = require('http');
 
-app.get('/', (req, res) => res.send('Hello World'))
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type' : 'text/plain'});
+  res.write('Hello World');
+  res.end();
+}).listen(8080, 'localhost');
 
-app.listen(port, () => console.log(`listening at http://localhost:${port}`))
+console.log('Server is listening on localhost:8080 Received GET request for: /')
